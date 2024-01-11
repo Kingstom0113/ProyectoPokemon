@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class PokemonsController extends Controller
 {
-    public function pokemons()
-{
-    $pokemons = Pokemon::all();
-    return view('pokemons.blade.php', ['pokemons' => $pokemons]);
-}
+   public function pokemons()
+    {
+        $pokemons = Pokemon::all();
+        return view('pokemon.pokemons', ['pokemons' => $pokemons]);
+    }
 
     public function create(Request $request){
         $request -> validate(['name'=> 'required', 'type' =>'required', 'subtype','region']);
@@ -29,5 +29,27 @@ class PokemonsController extends Controller
     public function newPokemon(){
     return view('create.blade.php');
 }
+
+public function mostrarFormularioPokemon()
+{
+    return view('pokemon.formulario_pokemon');
+}
+
+public function guardarPokemon(Request $request)
+{
+    $validatedData = $request->validate([
+        'id' => 'required|unique:pokemon,id',
+        'name' => 'required|unique:pokemon,name',
+        'type' => 'required',
+        'subtype' => 'nullable',
+        'region' => 'required',
+    ]);
+
+    Pokemon::create($validatedData);
+
+    return redirect('pokemons')->with('success', 'Pokemon guardado exitosamente');
+}
+
+
 
 }

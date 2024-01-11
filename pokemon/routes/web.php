@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//LISTADO DE POKEMONS
 Route::get('pokemons',[PokemonsController::class, 'pokemons']);
-Route::get('new_pokemon', [ PokemonsController::class, 'newPokemon' ]);
+
+//AGREGAR POKEMONS
+Route::get('formulario_pokemon', [PokemonsController::class, 'mostrarFormularioPokemon'])->name('formulario_pokemon');
+Route::post('guardar_pokemon', [PokemonsController::class, 'guardarPokemon'])->name('guardar_pokemon');
+

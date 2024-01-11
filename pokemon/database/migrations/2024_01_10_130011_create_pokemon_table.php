@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pokemon', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id')->primary();
             $table->string("name")->unique();
             $table->enum('type',['normal','fire','water','grass','electric','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy']);
             $table->enum('subtype',['normal','fire','water','grass','electric','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy'])->nullable();
