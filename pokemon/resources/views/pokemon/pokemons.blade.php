@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    @vite(['resources/js/app.js', 'resources/css/app.scss'])
     <title>Document</title>
 </head>
 
@@ -45,5 +46,4 @@
 
     </main>
 </body>
-
 </html>
