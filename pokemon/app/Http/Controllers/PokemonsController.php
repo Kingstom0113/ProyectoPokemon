@@ -50,6 +50,33 @@ public function guardarPokemon(Request $request)
     return redirect('pokemons')->with('success', 'Pokemon guardado exitosamente');
 }
 
+ public function editarPokemon($id)
+    {
+        $pokemon = Pokemon::find($id);
+        return view('pokemon.editar_pokemon', ['pokemon' => $pokemon]);
+    }
 
+    public function eliminarPokemon($id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->delete();
 
+        return redirect('pokemons')->with('success', 'Pokemon eliminado exitosamente');
+    }
+
+    
+    public function actualizarPokemon(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:pokemon,name,' . $id,
+            'type' => 'required',
+            'subtype' => 'nullable|max:255',
+            'region' => 'required',
+        ]);
+
+        $pokemon = Pokemon::find($id);
+        $pokemon->update($validatedData);
+
+        return redirect('pokemons')->with('success', 'Pokemon editado exitosamente');
+    }
 }

@@ -13,11 +13,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Nº Pokedex</th>
+                    <th scope="col">Pokedex</th>
                     <th scope="col">Pokemon</th>
                     <th scope="col">Tipo</th>
                     <th scope="col">Subtipo</th>
                     <th scope="col">Region</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             @foreach ($pokemons as $pokemon)
@@ -27,6 +28,16 @@
                     <td>{{ $pokemon->type }}</td>
                     <td>{{ $pokemon->subtype }}</td>
                     <td>{{ $pokemon->region }}</td>
+                    <td>
+                        <a href="{{ route('editar_pokemon', ['id' => $pokemon->id]) }}"
+                            class="btn btn-primary">Editar</a>
+                        <form method="post" action="{{ route('eliminar_pokemon', ['id' => $pokemon->id]) }}"
+                            style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </table>

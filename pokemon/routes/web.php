@@ -24,3 +24,11 @@ Route::get('pokemons',[PokemonsController::class, 'pokemons']);
 Route::get('formulario_pokemon', [PokemonsController::class, 'mostrarFormularioPokemon'])->name('formulario_pokemon');
 Route::post('guardar_pokemon', [PokemonsController::class, 'guardarPokemon'])->name('guardar_pokemon');
 
+//EDITAR POKEMONS
+Route::get('editar_pokemon/{id}', [PokemonsController::class, 'editarPokemon'])->name('editar_pokemon');
+Route::put('editar_pokemon/{id}', [PokemonsController::class, 'actualizarPokemon'])->name('actualizar_pokemon');
+
+//ELIMINAR POKEMONS
+Route::delete('eliminar_pokemon/{id}', [PokemonsController::class, 'eliminarPokemon'])->name('eliminar_pokemon');
+
+

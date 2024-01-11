@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pokemon', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->string("name")->unique();
-            $table->enum('type',['normal','fire','water','grass','electric','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy']);
-            $table->enum('subtype',['normal','fire','water','grass','electric','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy'])->nullable();
+            $table->enum('type',['normal','fire','water','grass','electric','flying','ground','poison','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy']);
+            $table->enum('subtype',['normal','fire','water','grass','electric','flying','ground','poison','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy'])->nullable();
             $table->enum('region',['kanto', 'johto', 'hoenn', 'sinnoh', 'teselia', 'kalos', 'alola', 'galar', 'paldea']);
             $table->timestamps();
         });
