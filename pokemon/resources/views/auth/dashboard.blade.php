@@ -34,7 +34,7 @@
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
-        @foreach ($user->pokemons as $pokemon)
+        @foreach (Auth::user()->pokemons as $pokemon)
             <tr data-id="{{ $pokemon->id }}">
                 <td>{{ $pokemon->id }}</td>
                 <td>{{ $pokemon->name }}</td>
