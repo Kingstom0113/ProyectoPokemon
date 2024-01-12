@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PokemonsController extends Controller
 {
-   public function pokemons()
+    public function index()
     {
-        $pokemons = Pokemon::all();
-        return view('pokemon.pokemons', ['pokemons' => $pokemons]);
+        $user = Auth::user();
+
+        $pokemons = $user->pokemons;
+
     }
 
     public function create(Request $request){

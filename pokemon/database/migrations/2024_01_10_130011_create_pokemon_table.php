@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('pokemon', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string("name")->unique();
             $table->enum('type',['normal','fire','water','grass','electric','flying','ground','poison','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy']);
             $table->enum('subtype',['normal','fire','water','grass','electric','flying','ground','poison','ice','fighting','psychic','bug','rock','ghost','dragon','dark','steel','fairy'])->nullable();
