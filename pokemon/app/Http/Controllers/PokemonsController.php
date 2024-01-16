@@ -47,12 +47,6 @@ public function mostrarFormularioPokemon()
     return view('pokemon.formulario_pokemon');
 }
 
- /*public function editarPokemon($id)
-    {
-        $pokemon = Pokemon::find($id);
-        return view('pokemon.editar_pokemon', ['pokemon' => $pokemon]);
-    }*/
-
     public function eliminarPokemon($id)
     {
         $pokemon = Pokemon::find($id);
@@ -74,6 +68,15 @@ public function mostrarFormularioPokemon()
         $pokemon = Pokemon::find($id);
         $pokemon->update($validatedData);
 
-        return redirect('')->with('success', 'Pokemon editado exitosamente');
+        return redirect('home')->with('success', 'Pokemon editado exitosamente');
+    }
+
+
+    public function editarPokemon($id)
+    {
+        $pokemon = Pokemon::find($id);
+
+        return view('pokemon.editar_pokemon', ['pokemon' => $pokemon]);
     }
 }
+

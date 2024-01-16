@@ -7,21 +7,21 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Diario del Programador') }}</title>
+    <title>{{ config('app.name', 'Pokemons') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    @vite(['resources/js/app.js', 'resources/css/app.scss']);
+    @vite(['resources/js/app.js', 'resources/css/app.scss'])
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Diario del Programador') }}
+                    {{ config('app.name', 'Pokemons') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
-                        @guest
+                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -61,6 +61,10 @@
         <main class="pt-4">
             @yield('content')
         </main>
+        <footer>
+            <p class="text-center">&copy; Copyright Proyecto Pokémon - {{ date('Y') }}</p>
+        </footer>
+
     </div>
 
 

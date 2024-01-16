@@ -26,7 +26,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Pokedex</th>
+                <th scope="col">#</th>
                 <th scope="col">Pokemon</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Subtipo</th>
