@@ -16,17 +16,26 @@ class PokemonsController extends Controller
 
     }
 
-    public function create(Request $request){
-        $request -> validate(['name'=> 'required', 'type' =>'required', 'subtype','region']);
+    public function guardarPokemon(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+            'subtype' => 'nullable',
+            'region' => 'required',
+        ]);
+
         $pokemonNuevo = new Pokemon;
-        $pokemonNuevo -> name = $request -> name;
-        $pokemonNuevo -> type = $request -> type;
-        $pokemonNuevo -> subtype = $request -> subtype;
-        $pokemonNuevo -> region = $request -> region;
+        $pokemonNuevo->name = $request->name;
+        $pokemonNuevo->type = $request->type;
+        $pokemonNuevo->subtype = $request->subtype;
+        $pokemonNuevo->region = $request->region;
 
-        $pokemonNuevo-> save();
+        $pokemonNuevo->user_id = auth()->id();
 
-        return back() -> with('mensaje', 'Pokemon registrado correctamente');
+        $pokemonNuevo->save();
+
+        return back()->with('mensaje', 'Pokemon registrado correctamente');
     }
 
     public function newPokemon(){
@@ -38,26 +47,11 @@ public function mostrarFormularioPokemon()
     return view('pokemon.formulario_pokemon');
 }
 
-public function guardarPokemon(Request $request)
-{
-    $validatedData = $request->validate([
-        'id' => 'required|unique:pokemon,id',
-        'name' => 'required|unique:pokemon,name',
-        'type' => 'required',
-        'subtype' => 'nullable',
-        'region' => 'required',
-    ]);
-
-    Pokemon::create($validatedData);
-
-    return redirect('pokemons')->with('success', 'Pokemon guardado exitosamente');
-}
-
- public function editarPokemon($id)
+ /*public function editarPokemon($id)
     {
         $pokemon = Pokemon::find($id);
         return view('pokemon.editar_pokemon', ['pokemon' => $pokemon]);
-    }
+    }*/
 
     public function eliminarPokemon($id)
     {
@@ -80,6 +74,6 @@ public function guardarPokemon(Request $request)
         $pokemon = Pokemon::find($id);
         $pokemon->update($validatedData);
 
-        return redirect('pokemons')->with('success', 'Pokemon editado exitosamente');
+        return redirect('')->with('success', 'Pokemon editado exitosamente');
     }
 }
