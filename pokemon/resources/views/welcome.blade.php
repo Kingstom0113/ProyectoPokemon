@@ -28,12 +28,8 @@
             </div>
         </div>
     </nav>
-
-    <!-- Footer -->
     <footer class="bg-dark text-center p-3 text-light">
         <p>&copy; {{ date('Y') }} Pokémon. Todos los derechos reservados.</p>
     </footer>
-
-    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

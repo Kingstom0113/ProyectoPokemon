@@ -3,3 +3,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+

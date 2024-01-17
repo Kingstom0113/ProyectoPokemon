@@ -52,7 +52,7 @@ public function mostrarFormularioPokemon()
         $pokemon = Pokemon::find($id);
         $pokemon->delete();
 
-        return redirect('pokemons')->with('success', 'Pokemon eliminado exitosamente');
+        return redirect('pokemons')->with('mensaje', 'Pokemon eliminado exitosamente');
     }
 
     

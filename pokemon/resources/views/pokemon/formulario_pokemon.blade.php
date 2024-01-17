@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/js/app.js', 'resources/css/app.scss']);
+    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/css/app.scss'])
     <title>Document</title>
 </head>
 
@@ -101,10 +101,14 @@
                                             <option value="paldea">Paldea</option>
                                         </select>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary">Guardar Pokemon</button>
-
+                                    <button type="submit" class="btn btn-primary mt-3">Guardar Pokemon</button>
+                                    <a href="{{ url('/home') }}" class="btn btn-secondary mt-3 float-end">Volver al PC</a>
                                 </form>
+                                @if (session('mensaje'))
+                                    <div class="alert alert-success mt-3">
+                                        {{ session('mensaje') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

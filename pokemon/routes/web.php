@@ -29,7 +29,7 @@ Route::get('editar_pokemon/{id}', [PokemonsController::class, 'editarPokemon'])-
 Route::put('editar_pokemon/{id}', [PokemonsController::class, 'actualizarPokemon'])->name('actualizar_pokemon');
 
 //ELIMINAR POKEMONS
-Route::delete('eliminar_pokemon/{id}', [PokemonsController::class, 'eliminarPokemon'])->name('eliminar_pokemon');
+Route::delete('/eliminar_pokemon/{id}', [PokemonsController::class, 'eliminarPokemon'])->name('eliminar_pokemon');
 
 Route::get('/home', function () {
 return view('auth.dashboard');

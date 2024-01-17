@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/js/app.js', 'resources/css/app.scss']);
+    @vite(['resources/js/app.js', 'resources/css/app.scss'])
     <title>Document</title>
 </head>
 
@@ -87,6 +87,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Editar Pokemon</button>
+            <a href="{{ url('/home') }}" class="btn btn-secondary mt-3 float-end">Volver al PC</a>
         </form>
     </div>
 </body>

@@ -1,27 +1,6 @@
 @extends('auth.template')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        Dashboard
-                    </div>
-
-                    <div class="card-body">
-                        @if(session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <h1>Tu PC de pokemons</h1>
     <table class="table">
         <thead>
@@ -43,14 +22,30 @@
                 <td>{{ $pokemon->region }}</td>
                 <td>
                     <a href="{{ route('editar_pokemon', ['id' => $pokemon->id]) }}" class="btn btn-primary">Editar</a>
-                    <form method="post" action="{{ route('eliminar_pokemon', ['id' => $pokemon->id]) }}" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" class="btn btn-danger" data-id="1" data-toggle="modal" data-target="#confirm-delete-modal">Eliminar</button>
-                    </form>
+                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-modal-{{ $pokemon->id }}">Eliminar</button>
+                      <!-- Modal -->
+                    <div class="modal fade" id="confirm-delete-modal-{{ $pokemon->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmar eliminación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Estás seguro de que quieres eliminar a {{ $pokemon->name }}?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <a href="{{ route('eliminar_pokemon', ['id' => $pokemon->id]) }}" class="btn btn-danger">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach
     </table>
-    <a href="{{ route('formulario_pokemon') }}" class="btn btn-primary">Añadir Pokemon</a>
+    <a href="{{ route('formulario_pokemon') }}" class="btn btn-primary center">Añadir Pokemon</a>
 @endsection
