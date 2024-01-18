@@ -1,6 +1,10 @@
+$gris-color: #343a40;
+
 footer {
-    background-color: #343a40;
+    background-color: $gris-color;
     color: #ffffff;
     text-align: center;
     padding: 10px;
+    position: fixed;
+    bottom: 0px;
 }
