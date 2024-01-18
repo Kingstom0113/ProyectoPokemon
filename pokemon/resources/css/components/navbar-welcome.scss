@@ -1,0 +1,24 @@
+$--moraete: #362A89;
+$--azul-oscuro: #023047;
+$--azulito: #8ecae6;
+.home{
+    color: white;
+    border: 2px solid;
+    border-radius: 30px;
+    border-color: $--moraete;
+    margin: 0.1em;
+    padding: 1em 2em;
+    text-decoration: none;
+    background-color: $--moraete;
+}
+
+.nav-welcome{
+    color: whitesmoke;
+    border: 2px solid;
+    border-radius: 30px;
+    border-color:$--azul-oscuro;
+    background-color:$--azulito;
+    margin: 0.5em;
+    padding: 1em 2em;
+    text-decoration: none;
+}

@@ -13,7 +13,6 @@ class PokemonsController extends Controller
         $user = Auth::user();
 
         $pokemons = $user->pokemons;
-
     }
 
     public function guardarPokemon(Request $request)
@@ -38,24 +37,34 @@ class PokemonsController extends Controller
         return back()->with('mensaje', 'Pokemon registrado correctamente');
     }
 
-    public function newPokemon(){
-    return view('create.blade.php');
-}
+    public function newPokemon()
+    {
+        return view('create.blade.php');
+    }
 
-public function mostrarFormularioPokemon()
-{
-    return view('pokemon.formulario_pokemon');
-}
+    public function mostrarFormularioPokemon()
+    {
+        return view('pokemon.formulario_pokemon');
+    }
 
     public function eliminarPokemon($id)
     {
         $pokemon = Pokemon::find($id);
-        $pokemon->delete();
 
-        return redirect('pokemons')->with('mensaje', 'Pokemon eliminado exitosamente');
+        if ($pokemon) {
+            $pokemon->delete();
+            return redirect('home')->with('success', 'Pokemon eliminado exitosamente');
+        } else {
+            return redirect('home')->with('error', 'No se pudo encontrar el Pokémon');
+        }
     }
 
-    
+
+
+
+
+
+
     public function actualizarPokemon(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -79,4 +88,3 @@ public function mostrarFormularioPokemon()
         return view('pokemon.editar_pokemon', ['pokemon' => $pokemon]);
     }
 }
-
