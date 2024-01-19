@@ -14,16 +14,29 @@ class PokemonsController extends Controller
 
         $pokemons = $user->pokemons;
     }
+
+    //controlador para guardar pokemons donde valido a nuvel de servidor los datos que entran
     public function guardarPokemon(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'pokedex' => 'required|integer|between:0,1025',
+            'name' => 'required|max:16',
             'type' => 'required',
             'subtype' => 'nullable',
             'region' => 'required',
         ]);
 
+        if (strlen($request->name) > 16) {
+            return back()->withErrors(['name' => 'El nombre no puede tener más de 16 caracteres.'])->withInput();
+        }
+
+        if ($request->type === $request->subtype) {
+            return back()->withErrors(['subtype' => 'El tipo y el subtipo no pueden ser iguales.'])->withInput();
+        }
+
         $pokemonNuevo = new Pokemon;
+        
+        $pokemonNuevo->pokedex = $request->pokedex;
         $pokemonNuevo->name = $request->name;
         $pokemonNuevo->type = $request->type;
         $pokemonNuevo->subtype = $request->subtype;
@@ -36,16 +49,16 @@ class PokemonsController extends Controller
         return back()->with('mensaje', 'Pokemon registrado correctamente');
     }
 
-    public function newPokemon()
-    {
-        return view('create.blade.php');
-    }
 
+    
+
+    //funcion para que aparezca el formulario para añadir pokemons al pc
     public function mostrarFormularioPokemon()
     {
         return view('pokemon.formulario_pokemon');
     }
 
+    //funcion para poder eliminar un pokemon con su id
     public function eliminarPokemon($id)
     {
         $pokemon = Pokemon::find($id);
@@ -67,11 +80,20 @@ class PokemonsController extends Controller
     public function actualizarPokemon(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:pokemon,name,' . $id,
+            'pokedex' => 'required',
+            'name' => 'required',
             'type' => 'required',
-            'subtype' => 'nullable|max:255',
+            'subtype' => 'nullable',
             'region' => 'required',
         ]);
+
+        if (strlen($request->name) > 16) {
+            return back()->withErrors(['name' => 'El nombre no puede tener más de 16 caracteres.'])->withInput();
+        }
+
+        if ($request->type === $request->subtype) {
+            return back()->withErrors(['subtype' => 'El tipo y el subtipo no pueden ser iguales.'])->withInput();
+        }
 
         $pokemon = Pokemon::find($id);
         $pokemon->update($validatedData);

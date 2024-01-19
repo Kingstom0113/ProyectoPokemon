@@ -43,6 +43,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
+    //un usuario puede tener varios pokemons, lo añador al modelo para poder hacer la relacion entre las dos tablas
     public function pokemons()
     {
         return $this->hasMany(Pokemon::class);

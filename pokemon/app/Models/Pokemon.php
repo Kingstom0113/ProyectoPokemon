@@ -11,6 +11,7 @@ class Pokemon extends Model
 
     protected $fillable = ['name', 'type', 'subtype', 'region', 'user_id'];
 
+    //igual aqui, relaciono las dos tablas
     public function user()
     {
         return $this->belongsTo(User::class);

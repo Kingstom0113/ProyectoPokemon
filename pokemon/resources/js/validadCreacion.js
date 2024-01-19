@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function validarFormulario() {
-            let id = document.getElementById('id').value;
+            let id = document.getElementById('pokedex').value;
             let name = document.getElementById('name').value;
             let type = document.getElementById('type').value;
             let subtype = document.getElementById('subtype').value;

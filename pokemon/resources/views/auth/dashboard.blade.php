@@ -1,5 +1,7 @@
 @extends('auth.template')
 
+
+<!-- Tabla para mostrar los pokemons del usuario-->
 @section('content')
     <h1 class="text-center">Tu PC Pokemon</h1>
      <div class="text-center mt-3 mb-4">
@@ -18,7 +20,7 @@
         </thead>
         @foreach (Auth::user()->pokemons as $pokemon)
             <tr data-id="{{ $pokemon->id }}">
-                <td>{{ $pokemon->id }}</td>
+                <td>{{ $pokemon->pokedex }}</td>
                 <td>{{ $pokemon->name }}</td>
                 <td>{{ $pokemon->type }}</td>
                 <td>{{ $pokemon->subtype }}</td>

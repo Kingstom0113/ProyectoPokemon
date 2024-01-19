@@ -1,5 +1,7 @@
 "use strict"
 
+
+//El código es para que dependiendo de la hora del dia, el boton home de la landing page cambie de color.
 document.addEventListener('DOMContentLoaded', function () {
             cambiarEstiloSegunHora();
         });

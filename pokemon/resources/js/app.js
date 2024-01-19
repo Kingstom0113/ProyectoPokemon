@@ -1,7 +1,5 @@
 import "bootstrap";
 
-"use strict";
-
 
 
 

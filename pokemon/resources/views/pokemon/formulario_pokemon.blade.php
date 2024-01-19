@@ -9,6 +9,7 @@
     <title>Pokemon</title>
 </head>
 
+<!--Aqui aparece un formulario donde puedes añadir un pokemon a tu pc como entrenador-->
 <body class="body-template">
     <main>
         @if (session('mensaje'))
@@ -17,12 +18,14 @@
             </div>
         @endif
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm">
             <div class="container ">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('Usuario', 'Home') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -30,7 +33,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
-                         @guest
+                        @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -41,11 +44,14 @@
                             @endif
                         @else
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ Auth::user()->name }}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                  <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    </li>
                                 </ul>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -57,19 +63,19 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container p-5">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
                             <div class="container">
-                                <h1>Añadir Pokemon</h1>
+                                <h1 class="text-center">Añadir Pokemon</h1>
 
-                                    <form method="post" id="formulario_pokemon" action="{{ route('guardar_pokemon') }}">
+                                <form method="post" id="formulario_pokemon" action="{{ route('guardar_pokemon') }}">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="id" class="form-label">Número de la Pokedex</label>
-                                        <input type="number" class="form-control" id="id" name="id"
+                                        <label for="pokedex" class="form-label">Número de la Pokedex</label>
+                                        <input type="number" class="form-control" id="pokedex" name="pokedex"
                                             required>
                                     </div>
                                     <div class="mb-3">
@@ -142,7 +148,8 @@
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary mt-3">Guardar Pokemon</button>
-                                    <a href="{{ url('/home') }}" class="btn btn-secondary mt-3 float-end">Volver al PC</a>
+                                    <a href="{{ url('/home') }}" class="btn btn-secondary mt-3 float-end">Volver al
+                                        PC</a>
                                 </form>
                                 @if (session('mensaje'))
                                     <div class="alert alert-success mt-3">
