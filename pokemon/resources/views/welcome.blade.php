@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pokémon Landing Page</title>
-    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/css/app.scss'])
+    @vite(['resources/js/navbar.js','resources/js/app.js', 'resources/css/app.css', 'resources/css/app.scss'])
 </head>
 
 <body class="body-welcome">
@@ -16,7 +16,7 @@
     <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-md navbar-light">
     <div class="container">
-        <a class="home" href="{{ url('/') }}">
+        <a id="navbarLink" class="home" href="{{ url('/') }}">
             {{ config('Usuario', 'Home') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -31,7 +31,7 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-welcome" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a   class="nav-welcome" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">

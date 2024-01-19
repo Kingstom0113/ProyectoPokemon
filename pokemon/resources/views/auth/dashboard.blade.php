@@ -1,8 +1,11 @@
 @extends('auth.template')
 
 @section('content')
-    <h1>Tu PC de pokemons</h1>
-    <table class="table">
+    <h1 class="text-center">Tu PC Pokemon</h1>
+     <div class="text-center mt-3 mb-4">
+    <a href="{{ route('formulario_pokemon') }}" class="btn btn-warning">Añadir Pokemon</a>
+</div class="table-container">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -33,5 +36,4 @@
         @endforeach
     </table>
     </div>
-    <a href="{{ route('formulario_pokemon') }}" class="btn btn-primary center">Añadir Pokemon</a>
 @endsection

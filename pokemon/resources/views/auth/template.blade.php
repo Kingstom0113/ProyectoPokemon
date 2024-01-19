@@ -16,7 +16,7 @@
     <!-- Styles -->
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
 </head>
-<body>
+<body class="body-template text-primary">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
