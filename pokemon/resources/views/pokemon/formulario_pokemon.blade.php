@@ -25,7 +25,7 @@
                             <div class="container">
                                 <h1>Añadir Pokemon</h1>
 
-                                <form method="post" action="{{ route('guardar_pokemon') }}">
+                                <form method="post" id="#formulario_pokemon" action="{{ route('guardar_pokemon') }}">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="id" class="form-label">Número de la Pokedex</label>

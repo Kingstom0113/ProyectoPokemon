@@ -45,6 +45,7 @@
                             {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="{{ url('/home') }}">Volver al PC</a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                             </li>

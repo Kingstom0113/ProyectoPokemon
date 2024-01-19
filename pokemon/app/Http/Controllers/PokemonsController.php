@@ -14,7 +14,6 @@ class PokemonsController extends Controller
 
         $pokemons = $user->pokemons;
     }
-
     public function guardarPokemon(Request $request)
     {
         $request->validate([
